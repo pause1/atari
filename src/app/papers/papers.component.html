@@ -1,0 +1,35 @@
+<table *ngIf="showPapers" class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Strona tytułowa</th>
+            <th>Plik</th>
+            <th>Pismo</th>
+            <th>Darczyńcy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let np of npObj;">
+            <td *ngIf="np['@attributes'].brak===undefined; else notShow"> <img class="img" style="cursor: default" src="http://www.atarionline.pl/biblioteka/czasopisma/{{npName}}/{{np.miniaturka}}"
+                    (error)="null" alt=":("></td>
+            <td class="align-middle" *ngIf="np['@attributes'].brak===undefined;">
+                format:<b> {{np.format}}</b><br />
+                stron:<b> {{np.stron}}</b><br />
+                plik: <a target="_blank" href="http://www.atarionline.pl/biblioteka/czasopisma/{{npName}}/{{np.plik}}"><b>link</b></a>
+            </td>
+            <td class="align-middle" *ngIf="np['@attributes'].brak===undefined;">
+                nazwa: <b>{{np.nazwa}}</b><br />
+                numer: <b>{{np.numer}}</b><br />
+                wydawca: <b>{{np.wydawca}}</b>
+            </td>
+            <td class="align-middle" *ngIf="np['@attributes'].brak===undefined;">
+                skan: <b>{{np.skan}}</b><br />
+                przetworzenie: <b>{{np.przetworzenie}}</b><br />
+                podesłał: <b>{{np.podeslal}}</b>
+            </td>
+            <ng-template #notShow>
+                <td class="font-italic">brak</td>
+                <td class="font-italic text-center" colspan="3">{{np['@attributes'].brak}}</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

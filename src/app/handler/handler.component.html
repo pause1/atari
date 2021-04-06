@@ -1,0 +1,15 @@
+<div class="text-center" style="margin: 30px">
+    <div class="btn-group btn-group-lg" role="group" style="margin: 0 auto;">
+        <div class="btn btn-primary" *ngFor="let year of years;" (click)="npShowPages(year)">
+            {{year}}
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
+
+
+
+<nav class=" text-center" *ngIf="years.length > 0" style="margin: 30px">
+    <a class=" form-control btn btn-info" routerLink="/" >Home</a>
+</nav>

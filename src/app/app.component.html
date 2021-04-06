@@ -1,0 +1,15 @@
+<table *ngIf="home" class="table">
+    <tbody>
+        <tr *ngFor="let item of items;let i = index;let even = even">
+            <td class="td align-middle text-right" *ngIf="even">
+                <img class="img" src="http://www.atarionline.pl/biblioteka/czasopisma/img/{{items[i][1]}}" (click)="selectNewspaper(items[i][0])">
+            </td>
+            <td class="td align-middle " *ngIf="even">
+                <img class="img" *ngIf="i<10" src="http://www.atarionline.pl/biblioteka/czasopisma/img/{{items[i+1][1]}}"
+                    default="loader.gif" (click)="selectNewspaper(items[i+1][0])">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<router-outlet></router-outlet>
